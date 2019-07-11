@@ -1,3 +1,5 @@
+import time
+
 import websocket
 
 
@@ -15,11 +17,15 @@ def on_close(ws):
 
 def on_open(ws):  # 连接到服务器之后就会触发on_open事件，这里用于send数据
     req = '{"marketInfo":"open"}'
-    print(req)
+    t1 = time.time()
+    print (t1)
     ws.send(req)
+    t2 = time.time()
+    print (t2)
     req = '{"contractInfo":"1-open"}'
-    print(req)
     ws.send(req)
+    t3 = time.time()
+    print (t3)
 
 if __name__ == "__main__":
     websocket.enableTrace(True)
